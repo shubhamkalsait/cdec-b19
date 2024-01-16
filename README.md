@@ -37,6 +37,8 @@ docker commit <container-id>    # to save changes from container to new image
 docker tag <image-id> <new-image-name>  # to rename the image
 docker login    # to authenticate in docker hub
 docker push <repo-name>     # push image in registry
+docker save -o <file-name>.<tar/zip> <image-id>     # archive image
+docker load -i <file-name>              # extract image from archive
 ```
 ## Docker Network Drivers
 ref: https://docs.docker.com/network/drivers/
@@ -45,4 +47,11 @@ docker network list     # to list the network
 docker network create --drive=<driver> --subnet=<subnet-cidr> <network-name>    # to create docker network
 docker run --network=<network-name> <image-name>    # to run container in specific network
 docker network rm <network-name>    # to remove the network
+```
+
+## Docker Volume
+```shell
+docker volume list      # to list volumes
+docker volume create <vol-name>     # to create volume
+docker run -v <vol-name>:<mount-path> <image>   # to run container with volume
 ```
