@@ -55,3 +55,20 @@ docker volume list      # to list volumes
 docker volume create <vol-name>     # to create volume
 docker run -v <vol-name>:<mount-path> <image>   # to run container with volume
 ```
+
+## Deploy three tier Application using Docker 
+- step1: Deploy DB container
+    - docker volume create studentapp-vol
+    - docker run -d -v syudentapp-vol:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=redhat mysql
+    - docker exec -it mysql bash
+        [mysql create database studentapp;]
+        [create_schema]
+- step2: Deploy backend container
+    - configure context.xml
+    - update dockerfile
+    - build backend image
+    - docker run -d -p 8080:8080 backend:latest
+- step3: Deploy frontend container
+    - configure index.html (update backend url)
+    - build frontend image
+    - docker run -d -p 80:80 frontend:latest
