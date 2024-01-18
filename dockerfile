@@ -1,4 +1,4 @@
 FROM alpine
 ARG DB_PASSWORD=redhat
 ENV DB_USER shubham
-CMD echo ${USER_NAME}
+CMD echo "${DB_USER} and ${DB_PASSWORD}"
